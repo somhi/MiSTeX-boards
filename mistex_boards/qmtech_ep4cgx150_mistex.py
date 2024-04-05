@@ -97,6 +97,7 @@ class Gamecore(Module):
         i2s         = platform.request("i2s")
         sdcard      = platform.request("sdcard")
         sdram       = platform.request("sdram", 1)
+        spdif       = platform.request("spdif")
         audio       = platform.request("audio")
         hps_spi     = platform.request("hps_spi")
         hps_control = platform.request("hps_control")
@@ -166,7 +167,7 @@ class Gamecore(Module):
 
             o_AUDIO_L = audio.l,
             o_AUDIO_R = audio.r,
-            o_AUDIO_SPDIF = audio.spdif,
+            o_AUDIO_SPDIF = spdif,
 
             o_LED_USER  = led.user,
             o_LED_HDD   = led.hdd,

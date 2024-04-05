@@ -1,8 +1,11 @@
 mainfile: jttoki_game_sdram.v
 
-use-template-sys: True
+use-template-sys: false
 
 defines:
+
+  #MISTER_DEBUG_NOHDMI: 1
+  
   ARCADE_SYS: 1
   USE_SDRAM: 1
   COMMIT: 57052818
@@ -44,7 +47,11 @@ defines:
   TOKI: 
 
 sourcedirs:
-  - sys
+  - upstream/modules/jtframe/target/mistex/sys
+  - upstream/modules/jtframe/target/mistex/sys/pll_cfg
+  - upstream/modules/jtframe/target/mistex/pll6144
+  - upstream/modules/jtframe/target/mistex/pll6293
+  - upstream/modules/jtframe/target/mistex/pll6671  
   - upstream/cores/toki/mister
   - upstream/cores/toki/hdl
   - upstream/modules/fx68k
@@ -57,23 +64,17 @@ sourcedirs:
   - upstream/modules/jtframe/hdl/video
   - upstream/modules/jtframe/hdl/cheat
   - upstream/modules/jtframe/hdl/clocking
-  # - upstream/modules/jtframe/hdl/sound
-  # - upstream/modules/jtframe/hdl/cpu
-  # - upstream/modules/jtframe/hdl/cpu/j68
   - upstream/modules/jtframe/hdl/cpu/pauloblaze
-  - upstream/modules/jtframe/target/mister/pll6144
-  - upstream/modules/jtframe/target/mister/pll6293
-  - upstream/modules/jtframe/target/mister/pll6671
 
 
 sourcefiles:
-  - upstream/modules/jtframe/target/mister/jtframe_emu.sv
-  - upstream/modules/jtframe/target/mister/jtframe_mister.sv
-  - upstream/modules/jtframe/target/mister/jtframe_mister_dwnld.v
-  - upstream/modules/jtframe/target/mister/jtframe_mr_ddrmux.v
-  - upstream/modules/jtframe/target/mister/jtframe_mr_ddrtest.v
-  - upstream/modules/jtframe/target/mister/jtframe_joymux.v
-  - upstream/modules/jtframe/target/mister/joydb15.v
+  - upstream/modules/jtframe/target/mistex/jtframe_emu.sv
+  - upstream/modules/jtframe/target/mistex/jtframe_mister.sv
+  - upstream/modules/jtframe/target/mistex/jtframe_mister_dwnld.v
+  - upstream/modules/jtframe/target/mistex/jtframe_mr_ddrmux.v
+  - upstream/modules/jtframe/target/mistex/jtframe_mr_ddrtest.v
+  - upstream/modules/jtframe/target/mistex/jtframe_joymux.v
+  - upstream/modules/jtframe/target/mistex/joydb15.v
   - upstream/modules/jtframe/hdl/sound/jtframe_fir.v
   - upstream/modules/jtframe/hdl/sound/jtframe_fir_mono.v
   - upstream/modules/jtframe/hdl/sound/jtframe_mixer.v
@@ -104,7 +105,6 @@ sourcefiles:
   - upstream/modules/jtframe/hdl/cpu/jtframe_virq.v
   - upstream/modules/jtframe/hdl/cpu/jtframe_z80.v
   - upstream/modules/jtframe/hdl/cpu/jtframe_z80wait.v
-  - rtl/pll.v
 
 
 quartus:
@@ -113,16 +113,16 @@ quartus:
     - 'set_global_assignment -name SEARCH_PATH "/home/jordi/Documents/Coding/Github/MiSTeX-ports/cores/Arcade-Toki/upstream/cores/toki/mister"'
 
   sourcefiles:
-    - sys/sys_top.sdc
-    - sys/pll_hdmi_0002.v
-    - sys/pll_audio_0002.v
-    - rtl/pll_0002.v
-
-
+    - upstream/modules/jtframe/target/mistex/sys/sys_top.sdc
+    - upstream/modules/jtframe/target/mistex/sys/pll/pll_0002.v
+    - upstream/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002.v
+    - upstream/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002.v
+    - upstream/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002.v
+    
 vivado:
   sourcefiles:
-    - sys/sys_top.xdc
-    - sys/pll_hdmi_0002-xilinx7.v
-    - sys/pll_audio_0002-xilinx7.v    
-    - rtl/pll_0002-xilinx7.v
+    - upstream/modules/jtframe/target/mistex/sys/sys_top.xdc
+    - upstream/modules/jtframe/target/mistex/sys/pll/pll_0002-xilinx7.v
+    - upstream/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002-xilinx7.v        
+    - upstream/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002-xilinx7.v
 

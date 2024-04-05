@@ -1,11 +1,11 @@
-mainfile: jttoki_game_sdram.v
+mainfile: upstream/cores/toki/mister/jttoki_game_sdram.v
 
 use-template-sys: false
 
 defines:
 
-  #MISTER_DEBUG_NOHDMI: 1
-  
+  MISTER_DEBUG_NOHDMI: 1
+
   ARCADE_SYS: 1
   USE_SDRAM: 1
   COMMIT: 57052818
@@ -109,19 +109,27 @@ sourcefiles:
 
 quartus:
   platform-commands:
-    - 'set_global_assignment -name SEARCH_PATH "/home/jordi/Documents/Coding/Github/MiSTeX-ports/cores/Arcade-Toki/upstream/modules/jtframe/hdl/inc"'
-    - 'set_global_assignment -name SEARCH_PATH "/home/jordi/Documents/Coding/Github/MiSTeX-ports/cores/Arcade-Toki/upstream/cores/toki/mister"'
+    - 'set_global_assignment -name SEARCH_PATH "${CORE_DIR}/upstream/modules/jtframe/hdl/inc"'
+    - 'set_global_assignment -name SEARCH_PATH "${CORE_DIR}/upstream/cores/toki/mister"'
 
   sourcefiles:
     - upstream/modules/jtframe/target/mistex/sys/sys_top.sdc
+    - upstream/modules/jtframe/target/mistex/sys/sdram_clk48.sdc
+    - upstream/modules/jtframe/target/mistex/sys/sdram_clk96.sdc
+    - upstream/modules/jtframe/target/mistex/sys/sys_top_nosdram.sdc
     - upstream/modules/jtframe/target/mistex/sys/pll/pll_0002.v
     - upstream/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002.v
     - upstream/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002.v
-    - upstream/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002.v
     
 vivado:
+  pre-synthesis-commands:
+    - 'set_property -name "include_dirs" -value "[file normalize "${CORE_DIR}/upstream/modules/jtframe/hdl/inc"] [file normalize "${CORE_DIR}/upstream/cores/toki/mister"]" -objects [current_fileset]'
+
   sourcefiles:
     - upstream/modules/jtframe/target/mistex/sys/sys_top.xdc
+    # - upstream/modules/jtframe/target/mistex/sys/sdram_clk48.xdc
+    # - upstream/modules/jtframe/target/mistex/sys/sdram_clk96.xdc
+    # - upstream/modules/jtframe/target/mistex/sys/sys_top_nosdram.xdc    
     - upstream/modules/jtframe/target/mistex/sys/pll/pll_0002-xilinx7.v
     - upstream/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002-xilinx7.v        
     - upstream/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002-xilinx7.v

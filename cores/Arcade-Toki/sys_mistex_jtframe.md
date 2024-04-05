@@ -35,6 +35,34 @@ veure les diferències aquí primer i després aplicar els canvis a sys jtframe
 
 
 
+
+
+  FORCED_SCANDOUBLER=0
+  VGA_SCALER=0
+  VSYNC_ADJUST=0
+  DVI_MODE=2
+  FB_TERMINAL=1
+
+
+
+
+
+Warning (12161): Node "sys_top:sys_top|VGA_HS" is stuck at GND because node is in wire loop and does not have a source
+
+Warning (12161): Node "sys_top:sys_top|HDMI_I2C_SDA" is stuck at GND because node is in wire loop and does not have a source
+
+CONNECTIVITY CHECKS
+
+
+
+
+
+Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
+
+Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
+
+
+
 ```sh
 Found dir: games/mame
 mame_root games

@@ -1,0 +1,247 @@
+mainfile: /home/jordi/jtcores/cores/kicker/mister/jtkicker_game_sdram.v
+
+use-template-sys: false
+
+defines:
+
+  #MISTER_DEBUG_NOHDMI: 1
+  #JTFRAME_MR_FASTIO: 0
+  #
+  ARCADE_SYS: 1
+  USE_SDRAM: 1
+  #
+  COMMIT: 1b185749-dirty
+  CORENAME: JTKICKER
+  CORE_OSD: 
+  DATE: 240407
+  GAMETOP: jtkicker_game_sdram
+  JTFRAME_ARX: 4
+  JTFRAME_ARY: 3
+  JTFRAME_BUTTONS: 2
+  JTFRAME_CLK24: 1
+  JTFRAME_COLORW: 4
+  JTFRAME_COMMIT: 32'h1b18574
+  JTFRAME_CREDITS: 1
+  JTFRAME_CREDITS_PAGES: 3
+  JTFRAME_DIALEMU_LEFT: 5
+  JTFRAME_DIPBASE: 16
+  JTFRAME_FLIP_RESET: 1
+  JTFRAME_HEIGHT: 9'd224
+  JTFRAME_JOY_DURL: 1
+  JTFRAME_MCLK: 49152
+  JTFRAME_MEMGEN: 
+  JTFRAME_PLL6144: 
+  JTFRAME_PLL: jtframe_pll6144
+  JTFRAME_PLLSIM: 10.173
+  JTFRAME_PROM_START: 26'h1C000
+  JTFRAME_PXLCLK: 6
+  JTFRAME_RELEASE: 1
+  JTFRAME_SDRAM_BANKS: 1
+  JTFRAME_SIGNED_SND: 1
+  JTFRAME_TIMESTAMP: 1712514739
+  JTFRAME_VERTICAL: 1
+  JTFRAME_WIDTH: 9'd256
+  KICKER: 
+  MAIN_MODULE: jtkicker_main
+  MISTER: 1
+  OBJ_START: 26'h16000
+  PCM_START: 26'h1E000
+  SCR_START: 26'h10000
+  SEPARATOR: -;
+  TARGET: mister
+  VIDEO_MODULE: jtkicker_video
+ 
+
+sourcedirs:
+  #- /home/jordi/jtcores/modules/jtframe/target/mistex/sys
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_cfg
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/pll6144
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/pll6144/jtframe_pll6144
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/pll6293
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/pll6293/jtframe_pll6293
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/pll6671  
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/pll6671/jtframe_pll6671  
+  - /home/jordi/jtcores/modules/jtframe/hdl/cpu/pauloblaze/
+
+sourcefiles:
+  #### sys folder
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/sys_top.v
+  # - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/sys_top.sdc
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/ascal.vhd
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_hdmi_adj.vhd
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/hq2x.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/scandoubler.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/scanlines.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/video_cleaner.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/shadowmask.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/gamma_corr.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/video_mixer.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/video_freezer.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/video_freak.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/arcade_video.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/math.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/f2sdram_safe_terminator.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/osd.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/vga_out.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/yc_out.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/i2c.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/alsa.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/i2s.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/spi-slave.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/spdif.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/audio_out.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/iir_filter.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/ltc2308.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/sigma_delta_dac.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/mt32pi.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/mcp23009.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/ddr_svc.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/sysmem.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/sd_card.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/hps_io.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/video_calc.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/mister_clksync.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/hps_interface.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/top_crg.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_audio.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_cfg.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_cfg_hdmi.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_hdmi.v
+
+  #### core files
+  - /home/jordi/jtcores/cores/kicker/hdl/jtkicker_colmix.v
+  - /home/jordi/jtcores/cores/kicker/hdl/jtkicker_game.v
+  - /home/jordi/jtcores/cores/kicker/hdl/jtkicker_main.v
+  - /home/jordi/jtcores/cores/kicker/hdl/jtkicker_obj.v
+  - /home/jordi/jtcores/cores/kicker/hdl/jtkicker_objdraw.v
+  - /home/jordi/jtcores/cores/kicker/hdl/jtkicker_scroll.v
+  - /home/jordi/jtcores/cores/kicker/hdl/jtkicker_video.v
+  - /home/jordi/jtcores/cores/kicker/hdl/jtkicker_vtimer.v
+  - /home/jordi/jtcores/modules/jt89/hdl/jt89.v
+  - /home/jordi/jtcores/modules/jt89/hdl/jt89_mixer.v
+  - /home/jordi/jtcores/modules/jt89/hdl/jt89_noise.v
+  - /home/jordi/jtcores/modules/jt89/hdl/jt89_tone.v
+  - /home/jordi/jtcores/modules/jt89/hdl/jt89_vol.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/cheat/jtframe_cheat.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/cheat/jtframe_cheat_rom.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/clocking/jtframe_cen48.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/clocking/jtframe_crossclk_cen.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/clocking/jtframe_frac_cen.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/clocking/jtframe_freqinfo.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/clocking/jtframe_gated_cen.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/clocking/jtframe_pxlcen.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/clocking/jtframe_rst_sync.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/clocking/jtframe_sync.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/cpu/jtframe_sys6809.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/cpu/jtframe_z80wait.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/cpu/mc6809i.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_bcd_cnt.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_board.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_debug.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_dip.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_enlarger.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_ff.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_led.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_reset.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_rsthold.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_sh.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_sys_info.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/jtframe_uart.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/keyboard/jt4701.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/keyboard/jtframe_4wayjoy.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/keyboard/jtframe_dial.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/keyboard/jtframe_inputs.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/keyboard/jtframe_keyboard.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/keyboard/jtframe_mouse.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/keyboard/jtframe_paddle.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/keyboard/ps2_intf_v.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/ram/jtframe_bram_rom.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/ram/jtframe_dual_ram.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/ram/jtframe_dual_ram16.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/ram/jtframe_ioctl_dump.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/ram/jtframe_obj_buffer.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/ram/jtframe_prom.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/ram/jtframe_ram.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/ram/jtframe_rpwp_ram.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_dwnld.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ram1_1slot.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ram1_2slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ram1_3slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ram1_4slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ram1_5slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ram2_4slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ram2_5slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ram2_6slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ram_rq.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ramslot_ctrl.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_rom.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_rom_1slot.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_rom_2slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_rom_3slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_rom_4slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_rom_5slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_rom_6slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_rom_7slots.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_rom_sync.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_romrq.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_romrq_bcache.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_romrq_xscache.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_sdram.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_sdram64.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_sdram64_bank.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_sdram64_init.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_sdram64_latch.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_sdram64_rfsh.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_sdram_stats.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_shadow.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sdram/jtframe_ucache.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sound/jtframe_fir.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sound/jtframe_mixer.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sound/jtframe_mixer_en.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/sound/jtframe_uprate2_fir.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_blank.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_credits.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_hsize.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_lfbuf_ddr.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_lfbuf_ddr_ctrl.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_lfbuf_line.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_logo.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_resync.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_tilemap.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_vtimer.v
+  - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_wirebw.v
+  - /home/jordi/jtcores/modules/jtframe/target/mister/joydb15.v
+  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_emu.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_joymux.v
+  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_mister.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_mister_dwnld.v
+  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_mr_ddrmux.v
+  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_mr_ddrtest.v
+  - /home/jordi/jtcores/cores/kicker/mister/jtkicker_game_sdram.v
+  
+
+quartus:
+  platform-commands:
+    - 'set_global_assignment -name SEARCH_PATH "/home/jordi/jtcores/modules/jtframe/hdl/inc"'
+    - 'set_global_assignment -name SEARCH_PATH "/home/jordi/jtcores/cores/kicker/mister"'
+
+  sourcefiles:
+    - /home/jordi/jtcores/cores/kicker/mister/sys_top.sdc
+    - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll/pll_0002.v
+    - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002.v
+    - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002.v
+    # - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/sys_top_nosdram.sdc
+    
+vivado:
+  pre-synthesis-commands:
+    - 'set_property -name "include_dirs" -value "[file normalize "/home/jordi/jtcores/modules/jtframe/hdl/inc"] [file normalize "/home/jordi/jtcores/cores/kicker/mister"]" -objects [current_fileset]'
+
+  sourcefiles:
+    - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/sys_top.xdc
+    #- /home/jordi/jtcores/cores/kicker/mister/sys_top.xdc
+    - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll/pll_0002-xilinx7.v
+    - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002-xilinx7.v        
+    - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002-xilinx7.v
+    # - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/sys_top_nosdram.xdc    
+

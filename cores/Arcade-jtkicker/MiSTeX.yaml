@@ -1,4 +1,4 @@
-mainfile: /home/jordi/jtcores/cores/kicker/mister/jtkicker_game_sdram.v
+mainfile: /home/jordi/jtcores/cores/kicker/mistex/jtkicker_game_sdram.v
 
 use-template-sys: false
 
@@ -6,6 +6,8 @@ defines:
 
   #MISTER_DEBUG_NOHDMI: 1
   #JTFRAME_MR_FASTIO: 0
+  #
+  JTFRAME_RELEASE: 1
   #
   ARCADE_SYS: 1
   USE_SDRAM: 1
@@ -39,7 +41,9 @@ defines:
   JTFRAME_SDRAM_BANKS: 1
   JTFRAME_SIGNED_SND: 1
   JTFRAME_TIMESTAMP: 1712514739
-  JTFRAME_VERTICAL: 1
+  #
+  JTFRAME_VERTICAL: 0
+  #
   JTFRAME_WIDTH: 9'd256
   KICKER: 
   MAIN_MODULE: jtkicker_main
@@ -211,23 +215,23 @@ sourcefiles:
   - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_tilemap.v
   - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_vtimer.v
   - /home/jordi/jtcores/modules/jtframe/hdl/video/jtframe_wirebw.v
-  - /home/jordi/jtcores/modules/jtframe/target/mister/joydb15.v
-  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_emu.sv
-  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_joymux.v
-  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_mister.sv
-  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_mister_dwnld.v
-  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_mr_ddrmux.v
-  - /home/jordi/jtcores/modules/jtframe/target/mister/jtframe_mr_ddrtest.v
-  - /home/jordi/jtcores/cores/kicker/mister/jtkicker_game_sdram.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/joydb15.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/jtframe_emu.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/jtframe_joymux.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/jtframe_mister.sv
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/jtframe_mister_dwnld.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/jtframe_mr_ddrmux.v
+  - /home/jordi/jtcores/modules/jtframe/target/mistex/jtframe_mr_ddrtest.v
+  - /home/jordi/jtcores/cores/kicker/mistex/jtkicker_game_sdram.v
   
 
 quartus:
   platform-commands:
     - 'set_global_assignment -name SEARCH_PATH "/home/jordi/jtcores/modules/jtframe/hdl/inc"'
-    - 'set_global_assignment -name SEARCH_PATH "/home/jordi/jtcores/cores/kicker/mister"'
+    - 'set_global_assignment -name SEARCH_PATH "/home/jordi/jtcores/cores/kicker/mistex"'
 
   sourcefiles:
-    - /home/jordi/jtcores/cores/kicker/mister/sys_top.sdc
+    - /home/jordi/jtcores/cores/kicker/mistex/sys_top.sdc
     - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll/pll_0002.v
     - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002.v
     - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002.v
@@ -235,11 +239,11 @@ quartus:
     
 vivado:
   pre-synthesis-commands:
-    - 'set_property -name "include_dirs" -value "[file normalize "/home/jordi/jtcores/modules/jtframe/hdl/inc"] [file normalize "/home/jordi/jtcores/cores/kicker/mister"]" -objects [current_fileset]'
+    - 'set_property -name "include_dirs" -value "[file normalize "/home/jordi/jtcores/modules/jtframe/hdl/inc"] [file normalize "/home/jordi/jtcores/cores/kicker/mistex"]" -objects [current_fileset]'
 
   sourcefiles:
     - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/sys_top.xdc
-    #- /home/jordi/jtcores/cores/kicker/mister/sys_top.xdc
+    #- /home/jordi/jtcores/cores/kicker/mistex/sys_top.xdc
     - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll/pll_0002-xilinx7.v
     - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002-xilinx7.v        
     - /home/jordi/jtcores/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002-xilinx7.v

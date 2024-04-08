@@ -97,7 +97,6 @@ class Gamecore(Module):
         i2s         = platform.request("i2s")
         sdcard      = platform.request("sdcard")
         sdram       = platform.request("sdram", 1)
-        spdif       = platform.request("spdif")
         audio       = platform.request("audio")
         spdif       = platform.request("spdif")
         hps_spi     = platform.request("hps_spi")

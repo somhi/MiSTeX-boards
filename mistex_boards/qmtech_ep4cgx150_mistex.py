@@ -99,6 +99,7 @@ class Gamecore(Module):
         sdram       = platform.request("sdram", 1)
         spdif       = platform.request("spdif")
         audio       = platform.request("audio")
+        spdif       = platform.request("spdif")
         hps_spi     = platform.request("hps_spi")
         hps_control = platform.request("hps_control")
 
@@ -224,7 +225,8 @@ def main(coredir, core):
 
     platform = qmtech_ep4cgx150.Platform(with_daughterboard=False)
 
-    add_designfiles(platform, coredir, mistex_yaml, 'quartus')
+    build_dir = get_build_dir(core)
+    add_designfiles(platform, coredir, mistex_yaml, 'quartus', build_dir)
 
     generate_build_id(platform, coredir)
     add_mainfile(platform, coredir, mistex_yaml)
@@ -232,6 +234,7 @@ def main(coredir, core):
     defines = mistex_yaml.get('defines', {})
     defines.update({
         "ALTERA": 1,
+        'LARGE_FPGA': 1,
         "CLK_100_EXT": 1,
         "DISABLE_VGA": 1,
         # "SKIP_SHADOWMASK": 1,
@@ -276,8 +279,6 @@ def main(coredir, core):
     platform.add_platform_command("set_global_assignment -name SEED 1")
 
     platform.add_extension(mistex_baseboard.extension("altera", sdram_index=1))
-
-    build_dir = get_build_dir(core)
 
     soc = BaseSoC(platform, core_name=core)
     builder = Builder(soc,

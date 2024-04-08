@@ -289,7 +289,8 @@ assign clk_pico = clk48;
 
 `ifndef JTFRAME_180SHIFT
     `ifdef JTFRAME_SDRAM96
-    assign SDRAM_CLK   = clk96sh;
+    // assign SDRAM_CLK   = clk96sh;
+    assign SDRAM_CLK   = clk48sh;
     `else
     assign SDRAM_CLK   = clk48sh;
     `endif

@@ -1,4 +1,4 @@
-mainfile: upstream/cores/toki/mister/jttoki_game_sdram.v
+mainfile: upstream/cores/toki/mistex/jttoki_game_sdram.v
 
 use-template-sys: false
 
@@ -6,6 +6,8 @@ defines:
 
   #MISTER_DEBUG_NOHDMI: 1
   JTFRAME_MR_FASTIO: 0
+  #
+  JTFRAME_RELEASE: 1
   #
   ARCADE_SYS: 1
   USE_SDRAM: 1
@@ -45,7 +47,7 @@ defines:
   JTFRAME_WIDTH: 9'd256
   MISTER: 1
   SEPARATOR: -;
-  TARGET: mister
+  TARGET: mistex
   TOKI: 
 
 sourcedirs:
@@ -54,10 +56,10 @@ sourcedirs:
   - upstream/modules/jtframe/target/mistex/pll6144
   - upstream/modules/jtframe/target/mistex/pll6144/jtframe_pll6144
   - upstream/modules/jtframe/target/mistex/pll6293
-  - upstream/modules/jtframe/target/mistex/pll6144/jtframe_pll6293
+  - upstream/modules/jtframe/target/mistex/pll6293/jtframe_pll6293
   - upstream/modules/jtframe/target/mistex/pll6671  
-  - upstream/modules/jtframe/target/mistex/pll6144/jtframe_pll6671
-  - upstream/cores/toki/mister
+  - upstream/modules/jtframe/target/mistex/pll6671/jtframe_pll6671
+  - upstream/cores/toki/mistex
   - upstream/cores/toki/hdl
   - upstream/modules/fx68k
   - upstream/modules/jt6295/hdl
@@ -115,7 +117,7 @@ sourcefiles:
 quartus:
   platform-commands:
     - 'set_global_assignment -name SEARCH_PATH "${CORE_DIR}/upstream/modules/jtframe/hdl/inc"'
-    - 'set_global_assignment -name SEARCH_PATH "${CORE_DIR}/upstream/cores/toki/mister"'
+    - 'set_global_assignment -name SEARCH_PATH "${CORE_DIR}/upstream/cores/toki/mistex"'
 
   sourcefiles:
     - upstream/modules/jtframe/target/mistex/sys/sys_top.sdc
@@ -126,11 +128,11 @@ quartus:
     
 vivado:
   pre-synthesis-commands:
-    - 'set_property -name "include_dirs" -value "[file normalize "${CORE_DIR}/upstream/modules/jtframe/hdl/inc"] [file normalize "${CORE_DIR}/upstream/cores/toki/mister"]" -objects [current_fileset]'
+    - 'set_property -name "include_dirs" -value "[file normalize "${CORE_DIR}/upstream/modules/jtframe/hdl/inc"] [file normalize "${CORE_DIR}/upstream/cores/toki/mistex"]" -objects [current_fileset]'
 
   sourcefiles:
     - upstream/modules/jtframe/target/mistex/sys/sys_top.xdc
-    #- upstream/cores/toki/mister/sys_top.xdc    
+    #- upstream/cores/toki/mistex/sys_top.xdc    
     - upstream/modules/jtframe/target/mistex/sys/pll/pll_0002-xilinx7.v
     - upstream/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002-xilinx7.v        
     - upstream/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002-xilinx7.v

@@ -19,6 +19,9 @@
 	`endif
 `endif
 
+// tested -5034, 4000 pitjor, 
+// tested no image: -3515, JTFRAME_180SHIFT
+
 module  pll_0002(
 
 	// interface 'refclk'

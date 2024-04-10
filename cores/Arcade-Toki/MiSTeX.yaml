@@ -6,6 +6,7 @@ defines:
 
   #MISTER_DEBUG_NOHDMI: 1
   JTFRAME_MR_FASTIO: 0
+  #JTFRAME_180SHIFT: 1
   #
   JTFRAME_RELEASE: 1
   #
@@ -19,7 +20,7 @@ defines:
   GAMETOP: jttoki_game_sdram
   JTFRAME_ARX: 4
   JTFRAME_ARY: 3
-  JTFRAME_BA1_START: 24'h280000
+  JTFRAME_BA1_START: 26'h280000
   JTFRAME_BUTTONS: 2
   JTFRAME_CLK48: 1
   JTFRAME_CLK96: 1
@@ -120,11 +121,10 @@ quartus:
     - 'set_global_assignment -name SEARCH_PATH "${CORE_DIR}/upstream/cores/toki/mistex"'
 
   sourcefiles:
-    - upstream/modules/jtframe/target/mistex/sys/sys_top.sdc
+    - upstream/cores/toki/mistex/sys_top.sdc
     - upstream/modules/jtframe/target/mistex/sys/pll/pll_0002.v
     - upstream/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002.v
     - upstream/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002.v
-    #- upstream/modules/jtframe/target/mistex/sys/sys_top_nosdram.sdc    
     
 vivado:
   pre-synthesis-commands:
@@ -136,6 +136,5 @@ vivado:
     - upstream/modules/jtframe/target/mistex/sys/pll/pll_0002-xilinx7.v
     - upstream/modules/jtframe/target/mistex/sys/pll_audio/pll_audio_0002-xilinx7.v        
     - upstream/modules/jtframe/target/mistex/sys/pll_hdmi/pll_hdmi_0002-xilinx7.v
-    # - upstream/modules/jtframe/target/mistex/sys/sys_top_nosdram.xdc    
         
 

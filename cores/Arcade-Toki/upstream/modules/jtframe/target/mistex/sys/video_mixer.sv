@@ -60,7 +60,7 @@ module video_mixer
 );
 
 localparam DWIDTH = HALF_DEPTH ? 3 : 7;
-localparam RINWIDTH = GAMMA && HALF_DEPTH ? 7 : DWIDTH;
+localparam RINWIDTH = (GAMMA && HALF_DEPTH) ? 7 : DWIDTH;
 localparam DWIDTH_SD = GAMMA ? 7 : DWIDTH;
 localparam HALF_DEPTH_SD = GAMMA ? 0 : HALF_DEPTH;
 
